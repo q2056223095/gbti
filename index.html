@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GBTI 3.1 股市人格鉴定中心</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow glow-1"></div>
+  <div class="bg-glow glow-2"></div>
+  <div class="noise"></div>
+
+  <main class="app-shell">
+    <section class="hero">
+      <div class="hero-badge">GBTI 3.1 · MARKET PERSONALITY SYSTEM</div>
+      <h1>GBTI 股市人格鉴定中心</h1>
+      <p class="subtitle">市场不会记住你的逻辑，只会记住你的亏损习惯。</p>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-label">诊断方式</span>
+          <strong>30 题扫描 · 4 大维度 · 16 型人格</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">产品气质</span>
+          <strong>MBTI 结构感 × 股民梗文化 × 可截图传播</strong>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">温馨提示</span>
+          <strong>本测试仅供娱乐，不构成投资建议，但可能构成精神伤害。</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-top">
+        <div>
+          <p class="eyebrow">MARKET PSYCHOLOGY SCAN</p>
+          <h2 id="panel-title">开始接受诊断</h2>
+        </div>
+        <div class="progress-meta">
+          <span id="progress-text">0 / 0</span>
+          <span id="progress-percent">0%</span>
+        </div>
+      </div>
+
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div id="intro-screen" class="intro-screen">
+        <div class="intro-card">
+          <div class="intro-kicker">SYSTEM READY</div>
+          <h3>你的亏损，真的只是运气不好吗？</h3>
+          <p>
+            我们将从追涨倾向、消息依赖、止损能力、仓位冲动四个维度，
+            对你的交易行为进行 30 题扫描，并生成专属四位人格代码。
+          </p>
+
+          <div class="intro-tags">
+            <span>30 题完整版</span>
+            <span>4 维组合</span>
+            <span>16 型人格</span>
+            <span>适合截图</span>
+          </div>
+
+          <button class="btn btn-primary btn-large" onclick="startQuiz()">启动人格扫描</button>
+        </div>
+      </div>
+
+      <div id="quiz-container" class="quiz-stage hidden"></div>
+
+      <div id="result-container" class="result-stage hidden">
+        <div class="result-header">
+          <div class="result-badge">DIAGNOSIS COMPLETE</div>
+          <p class="result-prefix">你的 GBTI 股市人格代码是</p>
+          <h2 id="result-code-big"></h2>
+          <p id="result-title" class="result-title-line"></p>
+          <div id="result-camp" class="result-camp"></div>
+        </div>
+
+        <div class="result-hero-card">
+          <div class="badge-wrap">
+            <div class="personality-badge">
+              <span class="badge-top">MARKET TYPE</span>
+              <strong id="badge-code">----</strong>
+              <span id="badge-name" class="badge-code">---</span>
+            </div>
+          </div>
+
+          <div class="verdict-wrap">
+            <h3>市场判词</h3>
+            <p id="result-verdict"></p>
+          </div>
+        </div>
+
+        <div class="dimension-card">
+          <div class="indices-head">
+            <h3>维度解析</h3>
+            <p>你不是在交易，你是在暴露自己的行为偏好。</p>
+          </div>
+          <div id="dimension-grid" class="dimension-grid"></div>
+        </div>
+
+        <div class="indices-card">
+          <div class="indices-head">
+            <h3>行为指数</h3>
+            <p>越高不一定越强，只代表越明显。</p>
+          </div>
+          <div id="indices-grid" class="indices-grid"></div>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-card primary">
+            <h3>人格诊断</h3>
+            <p id="result-desc"></p>
+          </div>
+
+          <div class="result-card">
+            <h3>经典症状</h3>
+            <p id="result-symptoms"></p>
+          </div>
+
+          <div class="result-card">
+            <h3>生存建议</h3>
+            <p id="result-advice"></p>
+          </div>
+        </div>
+
+        <div class="result-quote-card">
+          <h3>专属标语</h3>
+          <p id="result-slogan"></p>
+        </div>
+
+        <!-- 海报分享区 -->
+        <div class="share-poster-card" id="share-poster">
+          <div class="poster-topline">GBTI 3.1 · MARKET PERSONALITY REPORT</div>
+          <div class="poster-code" id="poster-code">----</div>
+          <div class="poster-name" id="poster-name">---</div>
+          <div class="poster-camp" id="poster-camp">---</div>
+
+          <div class="poster-quote" id="poster-quote">---</div>
+
+          <div class="poster-metrics" id="poster-metrics"></div>
+
+          <div class="poster-footer">
+            <span>市场不会记住你的逻辑，只会记住你的亏损习惯。</span>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-primary" onclick="restartQuiz()">再测一次</button>
+          <button class="btn btn-secondary" onclick="shareResult()">复制我的人格报告</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
